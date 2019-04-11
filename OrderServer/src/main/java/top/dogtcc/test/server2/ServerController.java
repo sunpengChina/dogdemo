@@ -29,7 +29,7 @@ public class ServerController {
 
         Orderdao ret = orderRepository.create(order);
 
-       // int i = 10/0;
+       int i = 10/0;
 
         return String.valueOf(ret.getId());
     }
