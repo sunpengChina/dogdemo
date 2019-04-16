@@ -13,6 +13,17 @@ import top.dogtcc.test.server2.repository.OrderRepository;
 @RestController
 public class ServerController {
 
+    @RequestMapping("/insert")
+    @DogCallAnnotation(TccHandlerClass = DbTccHandler.class)
+    public String insert(@RequestBody Orderdao order) {
+
+        Orderdao ret = orderRepository.create(order);
+
+        //    int i = 10/0;
+
+        return String.valueOf(ret.getId());
+    }
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -23,16 +34,7 @@ public class ServerController {
     }
 
 
-    @RequestMapping("/insert")
-    @DogCallAnnotation(TccHandlerClass = DbTccHandler.class)
-    public String insert(@RequestBody Orderdao order) {
 
-        Orderdao ret = orderRepository.create(order);
-
-   //    int i = 10/0;
-
-        return String.valueOf(ret.getId());
-    }
 
 
 }
